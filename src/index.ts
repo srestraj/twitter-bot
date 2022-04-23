@@ -61,7 +61,7 @@ const tweet = () => {
 
 // schedule the tweet & Github update
 
-const job = cron.schedule("00 10 * * *", () => {
+const job = cron.schedule("15 08 * * *", () => {
     main().catch(err=> console.log(err))
     tweet()
 });
