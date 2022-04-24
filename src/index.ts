@@ -3,7 +3,6 @@ import puppeteer from "puppeteer";
 import { format } from "date-fns";
 import Twitter from 'twitter';
 
-const cron = require('node-cron');
 let a = 1;
 
 dotenv.config()
@@ -59,11 +58,5 @@ const tweet = () => {
     client.post("statuses/update", { status: message }, onFinish);
 };
 
-// schedule the tweet & Github update
-
-const job = cron.schedule("15 14 * * *", () => {
-    main().catch(err=> console.log(err))
-    tweet()
-});
-
-job.start();
+main().catch(err=> console.log(err))
+tweet()
